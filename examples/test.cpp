@@ -15,7 +15,7 @@
 #define ANSI_COLOR_NONE    "\x1b[30m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
-//#define FMT_STRING "%+06.2f "
+#define FMT_STRING "%+06.2f "
 #define FMT_STRING "\u2588\u2588"
 
 #define MLX_I2C_ADDR 0x33
