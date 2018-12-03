@@ -1,38 +1,8 @@
 # mlx90640-library
-MLX90640 library functions
+MLX90640 library functions for PATHOS based on :/github.com/pimoroni/mlx90640-library
+
 
 ## Raspberry Pi Users
-
-** EXPERIMENTAL **
-
-This port uses either generic Linux I2C or the  bcm2835 library.
-
-### Generic Linux I2C Mode
-
-To get the best out of your sensor you should modify `/boot/config.txt` and change your I2C baudrate.
-
-The fastest rate recommended for compatibility with other sensors is 400kHz. This is compatible with SMBus devices:
-
-```text
-dtparam=i2c1_baudrate=400000
-```
-
-This will give you a framerate of - at most - 8FPS.
-
-If you're just using the MLX90640 and, for example, the 1.12" OLED, you can safely use 1MHz:
-
-```text
-dtparam=i2c1_baudrate=1000000
-```
-
-This will give you a framerate of - at most - 32FPS.
-
-Now build the MLX90640 library and examples in LINUX I2C mode:
-
-```text
-make clean
-make I2C_MODE=LINUX
-```
 
 ### BCM2835 Library Mode
 
@@ -60,46 +30,25 @@ To install dependencies:
 sudo apt-get install libavutil-dev libavcodec-dev libavformat-dev
 ```
 
-Then just `make` and `sudo ./test` or one of the other examples listed below:
+Then just `make` and `sudo ./blob` or  `sudo ./debugBlob` as listed below:
 
-# fbuf
-
-```
-sudo ./fbuf
-```
-
-This example uses direct-to-framebuffer rendering and black-blue-green-yellow-red-purple-white false colouring.
-
-If you gave issues with the output image, set "`IMAGE_SCALE`" to a smaller number.
-
-# interp
+# debugBlob
 
 ```
-sudo ./interp
+sudo ./debugBlob
 ```
 
-This example uses direct-to-framebuffer rendering and black-blue-green-yellow-red-purple-white false colouring.
-
-It also has 2x bicubic resize filter.
-
-If you have issues with the output image, set "`IMAGE_SCALE`" to a smaller number.
-
-# test
+This example helps for debugging.
+If you would like to see the output image, set "IMAGE_SCALE" to a smaller number.
+To change the frame per seconds, set "FPS" to 1,2,4,8, or 16
 
 
-```
-sudo ./test
-```
 
-This example draws out to the console using ANSI colours and the full block char.
 
-To see the actual temperature values, change "`FMT_STRING`" from the block char to the float format.
-
-# step
+# blob
 
 ```
-sudo ./step
+sudo ./blob
 ```
 
-Attempt to run in step by step mode (experimental)
-
+This example 
