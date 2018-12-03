@@ -20,8 +20,7 @@
 #include <algorithm>
 #include <math.h>
 #include <wiringPi.h>
-#include "opencv2/video/background_segm.hpp"
-#include "opencv2/bgsegm.hpp"
+
 
 
 	
@@ -66,7 +65,6 @@ using namespace std;
 using namespace cv; 
 ///  Global variables
 Ptr<BackgroundSubtractor> pMOG2; //MOG2 Background subtractor
-Ptr<BackgroundSubtractor> pMOG; //MOG Background subtractor
 	
 int keyboard; //input from keyboard
 
@@ -239,9 +237,7 @@ int main(int argc, char* argv[])
     int frames = 30;
     int subpage;
     static float mlx90640To[768];
-    //pMOG2 = createBackgroundSubtractorMOG2(1000,sigma*sigma,false); //MOG2 approach
-    pMOG2 = createBackgroundSubtractorGMG(1000,500,false); //MOG2 approach
-    pMOG = createBackgroundSubtractorGMG(1000,500,false); //MOG2 approach
+    pMOG2 = createBackgroundSubtractorMOG2(1000,sigma*sigma,false); //MOG2 approach
 
 
 
