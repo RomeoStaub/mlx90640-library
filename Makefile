@@ -1,6 +1,12 @@
 I2C_MODE = RPI
 I2C_LIBS = -lbcm2835
 
+
+ifeq ($(I2C_MODE), LINUX)
+	I2C_LIBS =
+endif
+
+
 LIBS_opencv = $(shell pkg-config --libs --cflags opencv) 
 
 LDLIBS    = -lwiringPi -lwiringPiDev -lpthread -lm -lcrypt -lrt
@@ -17,7 +23,7 @@ libMLX90640_API.a: functions/MLX90640_API.o functions/MLX90640_$(I2C_MODE)_I2C_D
 	ranlib $@
 
 functions/MLX90640_API.o functions/MLX90640_RPI_I2C_Driver.o functions/MLX90640_LINUX_I2C_Driver.o : CXXFLAGS+=-fPIC -I headers -shared $(I2C_LIBS) 
-examples/debugBlob.o  examples/blob.o : CXXFLAGS+=-std=c++11 $(shell pkg-config --cflags opencv)
+examples/debugBlob.o  examples/blob.o : CXXFLAGS+=-std=c++11   $(shell pkg-config --cflags opencv)
 
 debugBlob blob: CXXFLAGS+=-I. -std=c++11
 
@@ -25,7 +31,7 @@ debugBlob: examples/debugBlob.o libMLX90640_API.a
 	$(CXX) -L/home/pi/mlx90640-library $^ -o $@ $(I2C_LIBS) $(LIBS_opencv) $(LDLIBS)
 
 blob: examples/blob.o libMLX90640_API.a
-	$(CXX) -L/home/pi/mlx90640-library $^ -o $@ $(I2C_LIBS) $(LIBS_opencv)  
+	$(CXX) -L/home/pi/mlx90640-library $^ -o $@ $(I2C_LIBS) $(LIBS_opencv) $(LDLIBS) 
 
 bcm2835-1.55.tar.gz:	
 	wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.55.tar.gz

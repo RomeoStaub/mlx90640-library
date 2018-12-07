@@ -1,0 +1,17 @@
+%YAML:1.0
+---
+K: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: f
+   data: [ 2.68511887e+01, 0., 32., 0., 2.68511887e+01, 24., 0., 0., 1. ]
+R_C_W: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: f
+   data: [ -1., 0., 0., 0., 1., 0., 0., 0., -1. ]
+t_C_W: !!opencv-matrix
+   rows: 3
+   cols: 1
+   dt: f
+   data: [ 0., 0., 2600. ]

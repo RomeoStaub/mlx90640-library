@@ -39,7 +39,9 @@ sudo ./debugBlob
 ```
 
 This example helps for debugging.
+
 If you would like to see the output image, set "IMAGE_SCALE" to a smaller number.
+
 To change the frame per seconds, set "FPS" to 1,2,4,8, or 16
 
 
