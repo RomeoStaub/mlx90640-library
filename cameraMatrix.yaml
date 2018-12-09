@@ -14,4 +14,4 @@ t_C_W: !!opencv-matrix
    rows: 3
    cols: 1
    dt: f
-   data: [ 0., 0., 2600. ]
+   data: [ 0., 0., 2500. ]

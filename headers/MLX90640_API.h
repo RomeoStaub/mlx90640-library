@@ -60,7 +60,11 @@
     int MLX90640_GetCurMode(uint8_t slaveAddr); 
     int MLX90640_SetInterleavedMode(uint8_t slaveAddr);
     int MLX90640_SetChessMode(uint8_t slaveAddr);
+    
+    
+    //Corrects the values of the broken pixels
     void MLX90640_BadPixelsCorrection(uint16_t *pixels, float *to, int mode, paramsMLX90640 *params);
+   
     int MLX90640_SetSubPageRepeat(uint8_t slaveAddr, uint8_t subPageRepeat);
     int MLX90640_SetDeviceMode(uint8_t slaveAddr, uint8_t deviceMode);
     int MLX90640_InterpolateOutliers(uint16_t *frameData, uint16_t *eepromData);

@@ -27,7 +27,7 @@ examples/debugBlob.o  examples/blob.o : CXXFLAGS+=-std=c++11   $(shell pkg-confi
 
 debugBlob blob: CXXFLAGS+=-I. -std=c++11
 
-debugBlob: examples/debugBlob.o libMLX90640_API.a
+debugBlob: examples/debugBlob.o examples/lib/background_substraction.o examples/lib/human_detection.o libMLX90640_API.a
 	$(CXX) -L/home/pi/mlx90640-library $^ -o $@ $(I2C_LIBS) $(LIBS_opencv) $(LDLIBS)
 
 blob: examples/blob.o libMLX90640_API.a
